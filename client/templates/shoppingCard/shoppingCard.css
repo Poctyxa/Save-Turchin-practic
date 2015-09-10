@@ -1,0 +1,61 @@
+.shop-card {
+  width: 580px;
+  background-color: #F9D99F;
+  margin: 10px auto;
+  padding: 0;
+  border-radius: 4px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.5s;
+}
+.shop-card:hover {
+  background-color: #E8C487;
+}
+.card-body {
+  width: 580px;
+}
+.card-items {
+  height: 60px;
+  vertical-align: middle;
+  display: table-cell;
+  color: #8a6d3b;
+  text-decoration: none;
+}
+.text-align {
+  text-align: center;
+}
+.card-items:hover {
+  color: #8a6d3b;
+  text-decoration: none;
+  cursor: pointer;
+}
+.items-list {
+  margin: 0;
+  padding: 0;
+}
+.counter-card {
+  border-radius: 4px;
+  width: 30px;
+  height: 32px;
+  border: 0px solid #ccc;
+  padding: 5px;
+  outline: none;
+  text-align: center;
+}
+.btn-container {
+  height: 60px;
+  float: right;
+  margin-left: 15px;
+}
+.btn-small {
+  margin-top: 10px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.del-item-card {
+  margin: 15px 0 0 3px;
+  float: right;
+}

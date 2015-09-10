@@ -1,0 +1,24 @@
+.item-block {
+  border-radius: 4px;
+  padding: 5px;
+  margin: 0 0 5px 0;
+  cursor: pointer;
+  background-color: #FDDEB4;
+  transition-property: all;
+  transition-duration: 0.5s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.5s;
+  color: #8a6d3b;
+}
+.item-block:hover {
+  background-color: #FEC57B;
+}
+.item-picture-block {
+  float: left;
+  margin: 10px 0 0 10px;
+}
+.item-description {
+  margin: 0 0 0 80px;
+}

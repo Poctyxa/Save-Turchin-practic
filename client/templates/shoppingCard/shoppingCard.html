@@ -1,0 +1,102 @@
+<template name="ShoppingCard">
+  <div class="modal fade" id="shoppingCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-style">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"> <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span> Мій кошик</h4>
+        </div>
+        <div class="cardList">
+        {{#each getCardItems}}
+          {{> ShoppingCardItem}}
+        {{/each}}
+        </div>
+        <div class="total-shopping-card">
+          <table>
+            <tr>
+              <td>
+                Сумарна ціна:
+              </td>
+              <td>
+                <i class="total-items-price"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Сумарна вага:
+              </td>
+              <td>
+                <i class="total-items-weight"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Знижка:
+              </td>
+              <td>
+                <i class="total-discount"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Ціна за доставку:
+              </td>
+              <td>
+                <i class="total-delivery"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Загальна ціна:
+              </td>
+              <td>
+                <i class="total-price"></i>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning clear-fields" data-dismiss="modal">Закрити</button>
+          <button type="button" class="btn btn-success order-success">Замовити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="ShoppingCardItem">
+  <div id="item-{{_id}}" class="shop-card">
+    <div class="card-body">
+      <div class="container-fluid">
+        <div class="raw">
+          <div class="col-md-2 col-lg-2">
+            <a class="card-items">
+              <img src="{{ico}}">
+            </a>
+          </div>
+          <div class="col-md-4 col-lg-4 text-align">
+            <a class="card-items">
+              {{name}}
+            </a>
+          </div>
+          <div class="col-md-3 col-lg-3 card-items">
+            <a class="card-items">
+              <span class="goods-weight-container">
+                <input type="text" class="counter-card" readonly value="1" style="color: #8a6d3b;"> {{numb}}
+                <i>(<span class="card-weight">{{weight}}</span> кг)</i>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-3 col-lg-3 card-items">
+            <div class="btn-container">
+              <button type="button" class="btn btn-success btn-small btn-add-counter">+</button>
+              <button type="button" class="btn btn-danger btn-small btn-remove-counter">-</button>
+              <button type="button" class="close del-item-card">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

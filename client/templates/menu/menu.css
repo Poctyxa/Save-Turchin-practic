@@ -1,0 +1,39 @@
+.signin-signup-block {
+  position: absolute;
+  width: 270px;
+  right: 30px;
+  top: 50px;
+  z-index: 9999;
+  display: none;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.inputs {
+   border-radius: 8px;
+   padding: 4px;
+   margin: 5px;
+   width: 246px;
+   outline: none;
+   border: 1px solid #ccc;
+}
+input[name="registration"], input[name="signin_success"],
+ input[name="registration_success"], input[name="signin"] {
+  width: 122px;
+  margin: 10px 0 10px 0;
+}
+input[name="forgot"], input[name="forgot_success"] {
+  width: 250px;
+  margin: 0 0 10px 0;
+}
+.reg-form-article {
+  color: #333333;
+  text-align: center;
+}
+.errors {
+  color: red;
+}
+.sendMessage {
+  color: red;
+}

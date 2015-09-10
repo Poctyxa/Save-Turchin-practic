@@ -1,0 +1,178 @@
+<template name="InfoPanel">
+  {{> BuyItem}}
+  {{#if noInfo}}
+  <div class="col-md-6 col-lg-6">
+    <div class="container-fluid padding-0">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="panel panel-warning info-width">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{getInfo.name}}</h3>
+            </div>
+            <div class="panel-body">
+              <img src="{{getInfo.pic}}" alt="{{getInfo.name}}" class="goods-img">
+              <div>
+                <div class="description-block">
+                  <p class="goods-description">{{getInfo.description}}</p>
+                </div>
+                <button class="btn btn-success pull-right btn-margin show-modal"
+                        data-toggle="modal"
+                        data-target="#myModal">Замовити</button>
+                {{#if currentUser}}
+                <button class="btn btn-warning pull-right btn-margin add-to-card">У кошик</button>
+                {{else}}
+                <button type="button"
+                        class="btn btn-warning pull-right btn-margin disabled shopping-cart"
+                        data-container="body"
+                        data-toggle="popover"
+                        data-placement="top"
+                        data-content="Для додавання товарів у кошик необхідно авторизуватись!">У кошик</button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="col-md-6 col-lg-6">
+    <div class="container-fluid padding-0">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <h1>Hello!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="BuyItem">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-style">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Замовлення</h4>
+        </div>
+        {{>ReportTable}}
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning clear-fields" data-dismiss="modal">Закрити</button>
+          <button type="button" class="btn btn-success order-success">Підтвердити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="ReportTable">
+  <div class="modal-body">
+    <table class="buyReport">
+      <tr>
+        <td>
+          Товар:
+        </td>
+        <td>
+          {{goodsId.name}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Кількість:
+        </td>
+        <td>
+          <span class="goods-weight-container">
+            <input type="text" class="counter" readonly value="1"> {{goodsId.numb}}
+            <i>(<span class="goods-weight">{{goodsId.weight}}</span> кг)</i>
+          </span>
+          <div style="float: right;">
+          <button type="button" class="btn btn-success counter-plus">+</button>
+          <button type="button" class="btn btn-danger counter-minus">-</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          ПІ:
+        </td>
+        <td>
+          <input type="text"
+                 name="client_name"
+                 class="client-order-data"
+                 placeholder="Введіть ім'я та прізвище...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Електронна скринька:
+        </td>
+        <td>
+          <input type="text"
+                 name="client_email"
+                 class="client-order-data"
+                 placeholder="Адреса електронної скриньки...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Мобільний телефон:
+        </td>
+        <td>
+          {{#if currentUser}}
+          <input type="text"
+                 name="client_phone"
+                 class="client-order-data"
+                 maxlength="10"
+                 placeholder="Мобільний телефон..."
+                 value="{{userData.profile.phone}}">
+          {{else}}
+          <input type="text"
+                 name="client_phone"
+                 class="client-order-data"
+                 maxlength="10"
+                 placeholder="Мобільний телефон...">
+           {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Адреса:
+        </td>
+        <td>
+          <input type="text"
+                 name="client_address"
+                 class="client-order-data"
+                 placeholder="Введіть адресу (місто, вул. № будинку)...">
+        </td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td>
+          Ціна за товари:
+        </td>
+        <td>
+          <i class="totalPrice">{{goodsId.price}}</i> {{goodsId.unit}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Ціна за доставку:
+        </td>
+        <td>
+          <i class="delivery"></i> грн
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Знижка:
+        </td>
+        <td>
+          <i class="discount"></i>
+        </td>
+      </tr>
+    </table>
+    <h2 class="fullPaiment">До оплати - <span class="fullPrice"></span>грн</h2>
+  </div>
+</template>

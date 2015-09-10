@@ -1,0 +1,105 @@
+<template name="Menu">
+  <header class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{pathFor 'home'}}">ПП "ТУРЧИН"</a>
+    </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{{pathFor 'goods'}}">
+              Товари
+            </a>
+          </li>
+          <li>
+            <a href="{{pathFor 'about'}}">
+              Про нас
+            </a>
+          </li>
+        </ul>
+        {{#if currentUser}}
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="" class="logout-btn">
+              Вийти
+            </a>
+          </li>
+        </ul>
+        {{else}}
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="" class="signin-signup">
+              Ввійти \ Зареєструватися
+            </a>
+          </li>
+        </ul>
+        <div class="signin-signup-block">
+          {{> Signin}}
+        </div>
+        {{/if}}
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" alt="Номер гарячої підтримки">
+              <span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> (055) 345 23 45
+            </a>
+          </li>
+        </ul>
+        {{#if currentUser}}
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" alt="Корзина"
+                    class="shopping-card"
+                    data-toggle="modal"
+                    data-target="#shoppingCard">
+              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" > </span> Мій кошик
+            </a>
+          </li>
+        </ul>
+        {{> ShoppingCard}}
+        {{/if}}
+      </div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+    </header>
+</template>
+
+<template name="Signin">
+    <form class="signin-form hide-form">
+      <div class="reg-form-article">
+        Вхід
+      </div>
+      <input type="email" name="signin-email" placeholder="Введіть адресу електронної пошти..." class="inputs">
+      <input type="password" name="signin-password" placeholder="Введіть код..." class="inputs">
+      <input type="submit" name="signin_success" value="Ввійти" class="btn btn-success">
+      <input type="button" name="registration" value="Реєстрація" class="btn btn-warning" id="registration-form">
+      <input type="button" name="forgot" value="Забули код?" class="btn btn-warning" id="forgot-form">
+      <div class="errors">{{signinError}}</div>
+    </form>
+    <form class="registration-form hide-form">
+      <div class="reg-form-article">
+        Реєстрація
+      </div>
+      <input type="text" name="reg-name" placeholder="Введіть ім'я та прізвище..." class="inputs">
+      <input type="email" name="reg-email" placeholder="Введіть адресу електронної пошти..." class="inputs">
+      <input type="text" name="phone-numb" placeholder="Введіть номер телефону..." class="inputs"  min="10" max="10">
+      <input type="password" name="reg-password" placeholder="Введіть код..." min='6' max='20' class="inputs">
+      <input type="password" name="confirm_password" placeholder="Введіть код повторно..." min='6' max='20' class="inputs">
+      <input type="submit" name="registration_success" value="Реєстрація" class="btn btn-success">
+      <input type="button" name="signin" value="Вхід" class="btn btn-warning" id="signin-form">
+      <input type="button" name="forgot" value="Забули код?" class="btn btn-warning" id="forgot-form">
+      <div class="errors">{{regError}}</div>
+    </form>
+    <form class="forgot-form hide-form">
+      <div class="reg-form-article">
+        Відновлення коду
+      </div>
+      <input type="email" name="forgot-email" placeholder="Введіть адресу електронної пошти..." class="inputs">
+      <input type="button" name="signin" value="Вхід" class="btn btn-warning" id="signin-form">
+      <input type="button" name="registration" value="Реєстрація" class="btn btn-warning" id="registration-form">
+      <input type="submit" name="forgot_success" value="Відправити лист" class="btn btn-success">
+      <div class="sendMessage">{{sendMessage}}</div>
+    </form>
+</template>
